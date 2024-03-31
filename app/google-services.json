@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "193950285672",
+    "project_id": "skillswap-cf017",
+    "storage_bucket": "skillswap-cf017.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:193950285672:android:9101d70c94420f003fa0dd",
+        "android_client_info": {
+          "package_name": "uk.ac.tees.mad.d3895467"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjJ4ubi7WypKA2MM7b5kDV5jZyfoMRfaU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
