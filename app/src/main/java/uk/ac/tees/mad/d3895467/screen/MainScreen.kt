@@ -268,7 +268,7 @@ fun MainScreen(
                             .padding(innerPadding),
                         color = Color.White // Change background color here
                     ) {
-
+                        
                     }
                 }
                 composable(SkillSwapAppScreen.AddSkill.name) {
