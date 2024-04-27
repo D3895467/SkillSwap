@@ -4,9 +4,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
 import android.annotation.SuppressLint
 import android.content.Context
-import android.telephony.ims.RegistrationManager.RegistrationCallback
 import android.widget.Toast
-import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -19,9 +17,7 @@ import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.*
@@ -31,11 +27,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -44,6 +38,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import uk.ac.tees.mad.d3895467.Constants.mAuthName
 import uk.ac.tees.mad.d3895467.R
 import uk.ac.tees.mad.d3895467.data.UserData
 
@@ -117,7 +112,9 @@ fun RegistrationScreen(
                             imeAction = ImeAction.Next
                         ),
                         value = emailname,
-                        onValueChanged = { emailname = it },
+                        onValueChanged = { emailname = it
+                            mAuthName = emailname
+                                         },
                         visualTransformation = VisualTransformation.None,
                         modifier = Modifier
                             .fillMaxWidth(),
@@ -227,7 +224,12 @@ private fun performFirebaseRegistration(
                         name = name,
                         email = email,
                         password = password,
-                        image = R.drawable.ic_user.toString()
+                        image = R.drawable.ic_user.toString(),
+                        phoneNumber = "",
+                        address ="",
+                        zip ="",
+                        city ="",
+                        country ="",
                     )
                     FirebaseFirestore.getInstance().collection("users")
                         .document(uid)
