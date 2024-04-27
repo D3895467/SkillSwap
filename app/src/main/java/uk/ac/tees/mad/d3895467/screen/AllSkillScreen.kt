@@ -35,9 +35,24 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import uk.ac.tees.mad.d3895467.data.SkillListing
-import uk.ac.tees.mad.d3895467.ui.theme.primaryLight
 
 @Composable
-fun SearchScreen(userId: String, navController: NavController) {
+fun AllSkillScreen(userId: String, navController: NavController) {
 
+    var skillListings by remember { mutableStateOf<List<SkillListing>>(emptyList()) }
+
+
+    LaunchedEffect(Unit) {
+        skillListings = fetchSkillListings()
+        Log.d("search","$skillListings")
+    }
+
+    Column (modifier = Modifier
+        .padding(18.dp)
+        .fillMaxSize()
+    ){
+        // Display filtered skill listings
+        SkillRow(skillData = skillListings, navController  )
+    }
 }
+

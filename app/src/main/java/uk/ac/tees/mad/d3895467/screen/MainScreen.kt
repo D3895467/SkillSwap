@@ -43,7 +43,6 @@ import uk.ac.tees.mad.d3895467.R
 import uk.ac.tees.mad.d3895467.SkillSwapAppBar
 import uk.ac.tees.mad.d3895467.SkillSwapAppScreen
 
-
 @Composable
 fun MainScreen(
     onLogin: () -> Unit = {},
@@ -150,7 +149,7 @@ fun MainScreen(
 
         bottomBar = {
             if (showBottomBar) {
-                NavigationBar(modifier = Modifier.padding(start = 20.dp, end = 20.dp).background(shape = RoundedCornerShape(20.dp), color = Color.Transparent ), containerColor = MaterialTheme.colorScheme.primaryContainer) {
+                NavigationBar(modifier = Modifier.background(shape = RoundedCornerShape(20.dp), color = Color.Transparent ), containerColor = MaterialTheme.colorScheme.primaryContainer) {
                     NavigationBarItem(
                         selected = backStackEntry?.destination?.route == "home",
                         onClick = { navController.navigate("home") },
@@ -222,10 +221,8 @@ fun MainScreen(
                             .padding(innerPadding),
                         color = Color.White // Change background color here
                     ) {
-                        HomeScreen(
-                            userId = currentUserUid.toString(),
-                            navController = navController
-                        )
+                        HomeScreen(userId = currentUserUid.toString(),
+                            navController = navController)
 
                     }
                 }
@@ -238,8 +235,96 @@ fun MainScreen(
                     ) {
                         SearchScreen(
                             userId = currentUserUid.toString(),
-                            navController
-                        )
+                            navController)
+                    }
+                }
+                composable(SkillSwapAppScreen.AllSkillScreen.name) {
+                    Surface(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(innerPadding),
+                        color = Color.White // Change background color here
+                    ) {
+                        AllSkillScreen(
+                            userId = currentUserUid.toString(),
+                            navController)
+                    }
+                }
+                composable(SkillSwapAppScreen.Chat.name) {
+                    Surface(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(innerPadding),
+                        color = Color.White // Change background color here
+                    ) {
+                        ChatScreen(userId = currentUserUid.toString())
+                    }
+                }
+                composable(SkillSwapAppScreen.Profile.name) {
+                    var selected = backStackEntry?.destination?.route == "profile"
+                    Surface(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(innerPadding),
+                        color = Color.White // Change background color here
+                    ) {
+
+                    }
+                }
+                composable(SkillSwapAppScreen.AddSkill.name) {
+                    Surface(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(innerPadding),
+                        color = Color.White // Change background color here
+                    ) {
+                        AddSkillScreen(userId = currentUserUid.toString(),
+                            navController = navController)
+                    }
+                }
+
+
+                composable(SkillSwapAppScreen.SkillDetailScreen.name) {backStackEntry ->
+                    val name = backStackEntry.arguments?.getString("name")
+                    Surface(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(innerPadding),
+                        color = Color.White // Change background color here
+                    ) {
+                        SkillDetailScreen(userId = currentUserUid.toString(),
+                            skillName = name,
+                            navController = navController)
+                    }
+                }
+                composable(SkillSwapAppScreen.ChangePassword.name) {
+                    Surface(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(innerPadding),
+                        color = Color.White // Change background color here
+                    ) {
+
+                    }
+                }
+                composable(SkillSwapAppScreen.Feedback.name) {
+                    Surface(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(innerPadding),
+                        color = Color.White // Change background color here
+                    ) {
+
+                    }
+                }
+                composable(SkillSwapAppScreen.ProfileEdit.name) {
+                    Surface(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(innerPadding),
+                        color = Color.White // Change background color here
+                    ) {
+
                     }
                 }
             }
