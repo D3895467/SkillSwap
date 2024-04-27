@@ -43,6 +43,7 @@ import uk.ac.tees.mad.d3895467.R
 import uk.ac.tees.mad.d3895467.SkillSwapAppBar
 import uk.ac.tees.mad.d3895467.SkillSwapAppScreen
 import uk.ac.tees.mad.d3895467.screen.profile.ChangePasswordScreen
+import uk.ac.tees.mad.d3895467.screen.profile.ProfileEditScreen
 import uk.ac.tees.mad.d3895467.screen.profile.ProfileScreen
 import uk.ac.tees.mad.d3895467.screen.profile.SendMessageScreen
 
@@ -327,7 +328,7 @@ fun MainScreen(
                             .padding(innerPadding),
                         color = Color.White // Change background color here
                     ) {
-
+                        ProfileEditScreen(navController)
                     }
                 }
             }

@@ -155,14 +155,14 @@ fun ProfileScreen(
                     TableRow(
                         label = "Share",
                         modifier = Modifier.clickable {
-                           //TODO
+                            shareApp(context)
                         })
 
                     TableRow(
                         label = "Logout",
                         isDestructive = true,
                         modifier = Modifier.clickable {
-                            //TODO
+                            logoutUser(onLogin = onLogin, context )
                         })
                 }
             }
@@ -172,7 +172,14 @@ fun ProfileScreen(
 
 
 
+private fun logoutUser(onLogin: () -> Unit,context: Context) {
+    val mAuth = FirebaseAuth.getInstance()
 
+    // Sign out the current user
+    mAuth.signOut()
+    Toast.makeText(context,"Logout Successfully...",Toast.LENGTH_SHORT).show()
+    onLogin()
+}
 
 @Composable
 fun ProfileSection(
@@ -226,6 +233,19 @@ fun ProfileSection(
             }
         }
     }
+}
+
+
+private fun shareApp(context: Context) {
+    // Create an Intent to share text
+    val sendIntent: Intent = Intent().apply {
+        action = Intent.ACTION_SEND
+        putExtra(Intent.EXTRA_TEXT, "Check out this awesome app!")
+        type = "text/plain"
+    }
+
+    // Start the activity to share the text
+    context.startActivity(Intent.createChooser(sendIntent, "Share via"))
 }
 
 
