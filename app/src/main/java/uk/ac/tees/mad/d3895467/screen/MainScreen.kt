@@ -42,6 +42,9 @@ import uk.ac.tees.mad.d3895467.Constants.mAuthName
 import uk.ac.tees.mad.d3895467.R
 import uk.ac.tees.mad.d3895467.SkillSwapAppBar
 import uk.ac.tees.mad.d3895467.SkillSwapAppScreen
+import uk.ac.tees.mad.d3895467.screen.profile.ChangePasswordScreen
+import uk.ac.tees.mad.d3895467.screen.profile.ProfileScreen
+import uk.ac.tees.mad.d3895467.screen.profile.SendMessageScreen
 
 @Composable
 fun MainScreen(
@@ -268,7 +271,7 @@ fun MainScreen(
                             .padding(innerPadding),
                         color = Color.White // Change background color here
                     ) {
-                        
+                        ProfileScreen(onLogin = onLogin, navController = navController)
                     }
                 }
                 composable(SkillSwapAppScreen.AddSkill.name) {
@@ -304,7 +307,7 @@ fun MainScreen(
                             .padding(innerPadding),
                         color = Color.White // Change background color here
                     ) {
-
+                        ChangePasswordScreen(navController)
                     }
                 }
                 composable(SkillSwapAppScreen.Feedback.name) {
@@ -314,7 +317,7 @@ fun MainScreen(
                             .padding(innerPadding),
                         color = Color.White // Change background color here
                     ) {
-
+                        SendMessageScreen(userId = currentUserUid.toString(), navController)
                     }
                 }
                 composable(SkillSwapAppScreen.ProfileEdit.name) {
